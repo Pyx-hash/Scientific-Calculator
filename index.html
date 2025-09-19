@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="template" content="HTML | CSS | JavaScript"/>
+    <meta name="author" content="Pyx-hash"/>
+    <meta name="GitHub" content="https://github.com/Pyx-hash/"/>
+    <meta name="description" content="Responsive Scientific Calculator with 3D UI/3D Design Template using HTML, CSS and JavaScript"/>
+    
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="app.js"></script>
+    <title>Scientific Calculator</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="app-title">Scientific Calculator</h1>
+            <div class="settings-bar">
+                <button id="theme-toggle" class="btn btn-icon" aria-label="Toggle theme">🌗</button>
+                <button id="sound-toggle" class="btn btn-icon" aria-label="Toggle sound">🔊</button>
+                <button id="3d-toggle" class="btn btn-icon" aria-label="Toggle 3D mode">3D</button>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="calculator-container">
+                <div class="calculator-3d" id="calculator-3d">
+                    <div class="calculator-card">
+                        <div class="calc-display">
+                            <div class="calc-expression" id="expression"></div>
+                            <div class="calc-result" id="result">0</div>
+                            <div class="calc-buttons">
+                                <!-- ROW 1 -->
+                                <button class="calc-btn memory" data-value="MC">MC</button>
+                                <button class="calc-btn memory" data-value="MR">MR</button>
+                                <button class="calc-btn memory" data-value="M+">M+</button>
+                                <button class="calc-btn memory" data-value="M-">M-</button>
+                                <button class="calc-btn clear" data-value="AC">AC</button>
+
+                                <!-- ROW 2 -->
+                                
+                                <button class="calc-btn function" data-value="sin">sin</button>
+                                <button class="calc-btn function" data-value="cos">cos</button>
+                                <button class="calc-btn function" data-value="tan">tan</button>
+                                <button class="calc-btn function" data-value="(">(</button>
+                                <button class="calc-btn function" data-value=")">)</button>
+
+                                <!-- ROW 3 -->
+                            <button class="calc-btn function" data-value="asin">sin⁻¹</button>
+                            <button class="calc-btn function" data-value="acos">cos⁻¹</button>
+                            <button class="calc-btn function" data-value="atan">tan⁻¹</button>
+                            <button class="calc-btn function" data-value="√">√</button>
+                            <button class="calc-btn function" data-value="^">^</button>
+
+                            <!-- ROW 4 -->
+                            <button class="calc-btn function" data-value="log">log</button>
+                            <button class="calc-btn function" data-value="ln">ln</button>
+                            <button class="calc-btn function" data-value="π">π</button>
+                            <button class="calc-btn function" data-value="e">e</button>
+                            <button class="calc-btn clear" data-value="C">C</button>
+                            <!-- ROW 5 -->
+                            <button class="calc-btn" data-value="7">7</button>
+                            <button class="calc-btn" data-value="8">8</button>
+                            <button class="calc-btn" data-value="9">9</button>
+                            <button class="calc-btn operator" data-value="/">/</button>
+                            <button class="calc-btn function" data-value="!">!</button>
+
+                            <!-- ROW 6 -->
+                             <button class="calc-btn" data-value="4">4</button>
+                            <button class="calc-btn" data-value="5">5</button>
+                            <button class="calc-btn" data-value="6">6</button>
+                            <button class="calc-btn operator" data-value="*">x</button>
+                            <button class="calc-btn function" data-value="%">%</button>
+
+                            <!-- ROW 7 -->
+                             <button class="calc-btn" data-value="1">1</button>
+                            <button class="calc-btn" data-value="2">2</button>
+                            <button class="calc-btn" data-value="3">3</button>
+                            <button class="calc-btn operator" data-value="-">-</button>
+                            <button class="calc-btn function" data-value="Ans">Ans</button>
+
+                            <!-- ROW 8 -->
+                             <button class="calc-btn" data-value="0">0</button>
+                             <button class="calc-btn" data-value=".">.</button>
+                             <button class="calc-btn equals" data-value="=">=</button>
+                             <button class="calc-btn operator" data-value="+">+</button>
+                             <button class="calc-btn function tooltip" data-value="DEL">DEL
+                                <span class="tootip-text"> Backspace (also works with Delete Key)</span>
+                             </button>
+                            </div>
+                            <div class="calc-history" id="history">
+                                <div class="history-title">Calculation History</div>
+                                <div id="history-items"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="currency-converter">
+                    <h2 class="converter-title">Currency Converter</h2>
+                    <div class="currency-form">
+                        <div class="form-group">
+                            <label class="form-label">Amount</label>
+                            <input type="number" id="amount" class="form-input" placeholder="Enter Amount" value="1" step="0.01"/>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">From</label>
+                                <select id="from-currency" class="form-select">
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="JPY">JPY - Japanese Yen</option>
+                                    <option value="AUD">AUD - Australian Dollar</option>
+                                    <option value="CAD">CAD - Canadian Dollar</option>
+                                    <option value="CNY">CNY - Chinese Yuan</option>
+                                    <option value="PHP">PHP - Philippine Peso</option>
+                                </select>
+                            </div>
+                            <button id="swap-currencies" class="btn btn-icon" style="margin-top: 1.8rem;">⇆</button>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">To</label>
+                                <select id="to-currency" class="form-select">
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="JPY">JPY - Japanese Yen</option>
+                                    <option value="AUD">AUD - Australian Dollar</option>
+                                    <option value="CAD">CAD - Canadian Dollar</option>
+                                    <option value="CNY">CNY - Chinese Yuan</option>
+                                    <option value="PHP">PHP - Philippine Peso</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Exchange Rate</label>
+                            <input type="number" id="exchange-rate" class="form-input" placeholder="Enter Exchange Rate" step="0.000001">
+                        </div>
+                        <div class="form-row">
+                            <button id="use-calc-value" class="btn">Use Calculator Value</button>
+                            <button id="update-rates" class="btn btn-primary">Update Rates</button>
+                        </div>
+                        <div class="currency-result" id="conversion-result">1 USD = 0.927727 EUR</div>
+                        <div class="rate-info" id="rate-info">Last Updated: Using fallback rates</div>
+                    </div>
+                </div>
+            </div>
+            <div class="help-panel">
+                <div class="help-header" id="help-toggle">
+                    <h2 class="help-title">Help & Keyboard Shortcuts</h2>
+                    <span>⬇️</span>
+                </div>
+                <div class="help-section">
+                    <h3 class="help-section-title">Calculator Functions</h3>
+                    <p><a href="help-calculator.html">Learn More</a></p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>
+            Scientific Calculator | Code by: James Damasco
+        </p>
+    </footer>
+</body>
+</html>
